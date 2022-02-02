@@ -16,6 +16,12 @@ class CentroController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    public function __construct()
+    {
+        $this->authorizeResource(Centro::class, 'centro');
+    }
+
     public function index()
     {
         // return CentroResource::collection(Centro::paginate(10));
@@ -31,6 +37,8 @@ class CentroController extends Controller
      */
     public function store(Request $request)
     {
+        //$this->authorize('create', Centro::class);
+
         $centro = json_decode($request->getContent(), true);
 
         $centro = Centro::create($centro);
@@ -61,10 +69,7 @@ class CentroController extends Controller
      */
     public function update(Request $request, Centro $centro)
     {
-
-        if (! Gate::allows('update-centro', $centro)) {
-            abort(403);
-        }
+        //$this->authorize('update', $centro);
 
         $centroData = json_decode($request->getContent(), true);
         $centro->update($centroData);
@@ -78,8 +83,9 @@ class CentroController extends Controller
      * @param  \App\Models\Centro  $centro
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Centro $centro)
+    public function destroy(Request $request, Centro $centro)
     {
+        //$this->authorize('delete', $centro);
         $centro->delete();
     }
 }
