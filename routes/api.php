@@ -58,7 +58,7 @@ Route::post('tokens/create', function (Request $request) {
     ]);
 })->name('login');
 
-Route::get('centros/indexOD', [CentroController::class, 'indexOD'])->middleware('auth:sanctum');
+//Route::get('centros/indexOD', [CentroController::class, 'indexOD'])->middleware('auth:sanctum');
 
 Route::middleware('auth:sanctum')->
     apiResource('centros', CentroController::class)
@@ -78,7 +78,9 @@ Route::apiResource('faltas_profesores', falta_profesorController::class)
     'faltas_profesores' => 'falta_profesor'
 ]);
 
-Route::apiResource('grupos', GrupoController::class);
+Route::middleware('auth:sanctum')->
+    apiResource('grupos', GrupoController::class)
+;
 
 Route::apiResource('tutorizados', TutorizadoController::class);
 

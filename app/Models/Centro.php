@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\User;
 
 class Centro extends Model
 {
@@ -17,4 +18,8 @@ class Centro extends Model
         'coordinador',
         'verificado'
     ];
+
+    public function user(){
+        return $this->belongsTo(User::class, 'coordinador');
+    }
 }

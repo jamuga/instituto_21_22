@@ -63,9 +63,9 @@ class CentroController extends Controller
      */
     public function show(Centro $centro)
     {
-        // return new CentroResource($centro);
-        $response = Http::get('https://datosabiertos.regiondemurcia.es/catalogo/api/action//datastore_search?resource_id=52dd8435-46aa-495e-bd2b-703263e576e7&filters={"CODIGOCENTRO": "'. $centro->codigo .'"}');
-        return response()->json(json_decode($response)->result->records);
+        return new CentroResource($centro);
+        //$response = Http::get('https://datosabiertos.regiondemurcia.es/catalogo/api/action//datastore_search?resource_id=52dd8435-46aa-495e-bd2b-703263e576e7&filters={"CODIGOCENTRO": "'. $centro->codigo .'"}');
+        //return response()->json(json_decode($response)->result->records);
 
     }
 
