@@ -14,6 +14,7 @@ class NotasTableSeeder extends Seeder
      */
     public function run()
     {
-        \App\Models\Nota::factory(48)->create();
+        Nota::truncate();
+        \App\Models\Nota::factory(50)->create();
     }
 }

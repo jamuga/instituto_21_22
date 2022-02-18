@@ -15,6 +15,9 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         self::seedUsers();
+        $this->call([
+            NotasTableSeeder::class
+        ]);
     }
 
     private static function seedUsers()
@@ -32,14 +35,14 @@ class DatabaseSeeder extends Seeder
         */
         //Utilizando el método create()
 
+        User::truncate();
+        \App\Models\User::factory(25)->create();
         foreach (self::$arrayUsuarios as $usuarios) {
             $usuarios['password']=bcrypt($usuarios['password']);
             User::create(
                 $usuarios
             );
         }
-
-
     }
 
     private static $arrayUsuarios = array(
