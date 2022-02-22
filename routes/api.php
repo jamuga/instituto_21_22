@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\API\CentroController;
+use App\Http\Controllers\API\CursoController;
 use App\Http\Controllers\API\NivelController;
 
 
@@ -85,7 +86,11 @@ Route::apiResource('tutorizados', TutorizadoController::class);
 
 Route::middleware('auth:sanctum')->apiResource('notas', NotaController::class);
 
+Route::apiResource('cursos', CursoController::class);
+
 Route::middleware('auth:sanctum')->get('notas/media/{materia_id}', [NotaController::class, 'calcularMedia']);
+
+Route::middleware('auth:sanctum')->get('cursos/{cursoId}', [CursoController::class]);
 
 Route::apiResource('materias', MateriaController::class);
 

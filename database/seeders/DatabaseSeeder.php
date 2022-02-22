@@ -15,6 +15,13 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         self::seedUsers();
+        User::truncate();
+        $user = User::create([
+            'name' => 'Javier Murcia',
+            'email' => '1833822@alu.murciaeduca.es',
+            'password' => bcrypt('password'),
+            'usuario_av' => 9628,
+        ]);
     }
 
     private static function seedUsers()
