@@ -86,7 +86,7 @@ Route::apiResource('tutorizados', TutorizadoController::class);
 
 Route::middleware('auth:sanctum')->apiResource('notas', NotaController::class);
 
-Route::apiResource('cursos', CursoController::class);
+Route::middleware('auth:sanctum')->apiResource('cursos', CursoController::class);
 
 Route::middleware('auth:sanctum')->get('notas/media/{materia_id}', [NotaController::class, 'calcularMedia']);
 

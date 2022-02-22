@@ -30,7 +30,7 @@ class CursoPolicy
      */
     public function view(User $user, Curso $curso)
     {
-        return !is_null($user->usuario_av);
+        return ($user->usuario_av!=null);
     }
 
     /**
